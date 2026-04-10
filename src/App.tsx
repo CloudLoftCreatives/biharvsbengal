@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, AlertTriangle, CheckCircle2, ArrowRight, Zap, ShieldAlert, Target, ExternalLink } from 'lucide-react';
+import { TrendingUp, AlertTriangle, CheckCircle2, ArrowRight, Zap, ShieldAlert, Target } from 'lucide-react';
 import { motion } from 'motion/react';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
@@ -44,17 +44,6 @@ const Marquee = ({ text, speed = "normal" }: { text: string, speed?: "normal" | 
     </div>
   );
 };
-
-const SourceLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
-  <a 
-    href={href} 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    className="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wider hover:text-[var(--color-accent)] transition-colors underline underline-offset-4 decoration-2"
-  >
-    {children} <ExternalLink size={14} />
-  </a>
-);
 
 export default function App() {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
