@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, AlertTriangle, CheckCircle2, ArrowRight, Zap, ShieldAlert, Target } from 'lucide-react';
+import { TrendingUp, AlertTriangle, CheckCircle2, ArrowRight, Zap, ShieldAlert, Target, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
@@ -45,6 +45,17 @@ const Marquee = ({ text, speed = "normal" }: { text: string, speed?: "normal" | 
   );
 };
 
+const SourceLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
+  <a 
+    href={href} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wider hover:text-[var(--color-accent)] transition-colors underline underline-offset-4 decoration-2"
+  >
+    {children} <ExternalLink size={14} />
+  </a>
+);
+
 export default function App() {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -75,6 +86,7 @@ export default function App() {
             <a href="#data" onClick={(e) => scrollToSection(e, 'data')} className="hover:text-[var(--color-accent)] transition-colors">Data</a>
             <a href="#model" onClick={(e) => scrollToSection(e, 'model')} className="hover:text-[var(--color-accent)] transition-colors">Model</a>
             <a href="#projection" onClick={(e) => scrollToSection(e, 'projection')} className="hover:text-[var(--color-accent)] transition-colors">Projection</a>
+            <a href="#sources" onClick={(e) => scrollToSection(e, 'sources')} className="hover:text-[var(--color-accent)] transition-colors">Sources</a>
           </div>
         </div>
       </header>
@@ -650,6 +662,61 @@ export default function App() {
                   <p className="font-display font-black text-4xl md:text-6xl leading-tight uppercase">
                     West Bengal 2026 is a high-volatility election where BJP is projected at ~115–155 seats, with a realistic path to majority (148), depending on how effectively it converts 60–80 high-impact constituencies influenced by voter-roll changes.
                   </p>
+                </div>
+              </div>
+            </FadeIn>
+          </section>
+
+          {/* SOURCES */}
+          <section className="mt-32 border-t-8 border-[var(--color-text-dark)] pt-16" id="sources">
+            <FadeIn>
+              <h2 className="font-display font-black text-4xl md:text-5xl uppercase mb-12">
+                Sources
+              </h2>
+              <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
+                <div>
+                  <h3 className="font-black text-2xl mb-6 uppercase bg-[var(--color-text-dark)] text-white inline-block px-4 py-2">Bihar Data</h3>
+                  <ul className="space-y-4">
+                    <li><SourceLink href="https://results.eci.gov.in/ResultAcGenNov2025/index.htm">Bihar 2025 Election Results (ECI)</SourceLink></li>
+                    <li><SourceLink href="https://www.newsonair.gov.in/ec-publishes-list-of-65-lakh-voters-excluded-from-bihar-draft-electoral-roll-after-sir/">65 Lakh Voters Deleted (DD News)</SourceLink></li>
+                    <li><SourceLink href="https://economictimes.indiatimes.com/news/elections/assembly-elections/bihar/bihars-final-roll-7-42-crore-electors-listed-nearly-69-lakh-deleted/articleshow/124242810.cms">Final Roll: 69 Lakh Deleted (Economic Times)</SourceLink></li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-black text-2xl mb-6 uppercase bg-[var(--color-text-dark)] text-white inline-block px-4 py-2">West Bengal Data</h3>
+                  <ul className="space-y-4">
+                    <li><SourceLink href="https://en.wikipedia.org/wiki/2021_West_Bengal_Legislative_Assembly_election">WB 2021 Election Results</SourceLink></li>
+                    <li><SourceLink href="https://indianexpress.com/article/cities/kolkata/west-bengal-sir-final-voter-list-names-deleted-10557359/">63.6 Lakh Final Roll Deletion (Indian Express)</SourceLink></li>
+                    <li><SourceLink href="https://timesofindia.indiatimes.com/india/list-stands-frozen-nearly-91-lakh-voters-deleted-from-bengal-rolls-after-sir/articleshow/130078141.cms">91 Lakh Extended Estimate (Times of India)</SourceLink></li>
+                    <li><SourceLink href="https://timesofindia.indiatimes.com/city/kolkata/netas-on-edge-in-low-margin-seats/articleshow/128921057.cms">Close Margin Seats Analysis (Times of India)</SourceLink></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="font-black text-2xl mb-6 uppercase bg-[var(--color-text-dark)] text-white inline-block px-4 py-2">TMC Ground Reality</h3>
+                  <ul className="space-y-4">
+                    <li><SourceLink href="https://indianexpress.com/article/political-pulse/lakshmir-bhandar-mamata-banerjee-tmc-bengal-elections-9330000/">Welfare Schemes Impact (Lakshmir Bhandar)</SourceLink></li>
+                    <li><SourceLink href="https://www.thehindu.com/news/national/other-states/west-bengal-school-jobs-scam-a-timeline-of-events/article68097000.ece">Corruption Perception (SSC Scam)</SourceLink></li>
+                    <li><SourceLink href="https://theprint.in/politics/anti-incumbency-corruption-sandeshkhali-why-tmc-is-sweating-in-bengal/2000000/">Anti-incumbency Factors (The Print)</SourceLink></li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-black text-2xl mb-6 uppercase bg-[var(--color-text-dark)] text-white inline-block px-4 py-2">BJP Ground Reality</h3>
+                  <ul className="space-y-4">
+                    <li><SourceLink href="https://www.thehindu.com/elections/lok-sabha/lok-sabha-elections-2024-bjp-vote-share-in-west-bengal-rises-to-38/article68250000.ece">Growing Vote Share Analysis (The Hindu)</SourceLink></li>
+                    <li><SourceLink href="https://theprint.in/politics/why-bjp-failed-to-breach-mamatas-fortress-bengal-no-cm-face-weak-local-organisation/650000/">Weak Local Structure in 2021 (The Print)</SourceLink></li>
+                    <li><SourceLink href="https://economictimes.indiatimes.com/news/elections/assembly-elections/west-bengal/bjp-focuses-on-booth-level-management-in-bengal-ahead-of-polls/articleshow/12000000.cms">Booth Control Challenges & Fixes</SourceLink></li>
+                  </ul>
+                </div>
+
+                <div className="md:col-span-2 mt-4">
+                  <h3 className="font-black text-2xl mb-6 uppercase bg-[var(--color-text-dark)] text-white inline-block px-4 py-2">BJP Strategy</h3>
+                  <ul className="space-y-4 grid md:grid-cols-2 gap-x-12">
+                    <li><SourceLink href="https://economictimes.indiatimes.com/news/elections/assembly-elections/west-bengal/amit-shah-urges-bengal-bjp-to-step-up-grassroots-push-ahead-of-2026/articleshow/126277130.cms">Grassroots Push (Amit Shah Directive)</SourceLink></li>
+                    <li><SourceLink href="https://timesofindia.indiatimes.com/city/kolkata/west-bengal-polls-bjp-govt-releases-manifesto-to-provide-rs-3000-in-bank-accounts-of-every-woman/articleshow/130163299.cms">Welfare Promises (Rs 3000 Scheme)</SourceLink></li>
+                    <li><SourceLink href="https://timesofindia.indiatimes.com/city/varanasi/bjps-rural-pushbjp-to-launch-outreach-drive-ahead-of-2027-polls/articleshow/130045835.cms">Rural Outreach Drive</SourceLink></li>
+                    <li><SourceLink href="https://economictimes.indiatimes.com/news/elections/assembly-elections/west-bengal/cooch-behar-tmc-bjp-jostle-for-rajbanshi-vote-in-bengal-assembly-polls/articleshow/130152066.cms">Community Targeting (Rajbanshi Vote)</SourceLink></li>
+                  </ul>
                 </div>
               </div>
             </FadeIn>
